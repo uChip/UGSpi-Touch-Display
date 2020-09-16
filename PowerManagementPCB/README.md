@@ -7,3 +7,9 @@ Shutdown from Raspberry Pi menu signals board (when enabled) to turn off 5V to R
 Tapping power button when Raspberry Pi is ON signals Raspberry Pi (when enabled) to shutdown.  
 
 Holding down power button for 3 seconds turns off 5V to Raspberry Pi & Display.  
+
+LED Indicator:  
+Breathing - power to pi is off  
+On - power to pi is on
+Flashing - Waiting for pi to signal ok to power off  
+Off - power to pi is off  
