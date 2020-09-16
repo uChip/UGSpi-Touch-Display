@@ -9,7 +9,7 @@ Tapping power button when Raspberry Pi is ON signals Raspberry Pi (when enabled)
 Holding down power button for 3 seconds turns off 5V to Raspberry Pi & Display.  
 
 LED Indicator:  
-Breathing - power to pi is off  
+Breathing - power to pi is off, ready to power on  
 On - power to pi is on  
 Flashing - Waiting for pi to signal ok to power off  
-Off - power to pi is off  
+Off - power to pi is off or no power in  
