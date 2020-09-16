@@ -1,38 +1,39 @@
+This mostly works, but seems a little unstable.  Everything is fine up to Autostarting the UGS application.
+
 Load Raspian image to SD card
 Boot Raspbian
 Update image
-raspi-config
-  #change raspi-config to wait for network
-  Activate OpenGL driver: From the Terminal run sudo raspi-config. 
-   Then choose Advanced Options >> GL  Driver >> GL (Fake KMS).
+Use raspi-config to change the following
+  Set wait for network
+  Activate OpenGL driver: choose Advanced Options >> GL  Driver >> GL (Fake KMS).
   Expand the file system: Advanced Options >> Expand the file system.
 
 Install Java
-sudo apt install openjdk-8-jdk
+  sudo apt install openjdk-8-jdk
 
 Load UGSplatform
-download zip
-unpack
-sudo mv /opt/vc /opt/vc.old
+  download zip
+  unpack
+  Fix a problem showing simulation 
+    sudo mv /opt/vc /opt/vc.old
 
-# Mount the drop folder shared from Windows
-#edit /etc/fstab to include the line 
-#//192.168.1.11/DropFolder /home/pi/Desktop/DropFolder cifs username=<username>,password=<password> 0 0
-#change raspi-config to wait for network
+Mount the drop folder shared from Windows
+  sudo nano /etc/fstab
+  append
+  //192.168.1.11/DropFolder /home/pi/Desktop/DropFolder cifs username=<username>,password=<password> 0 0
 
-
-#Pull down (open collector) on GPIO4 to initiate shutdown (pin7)
-#Shutdown in progress will raise GPIO17 (pin11)
-
-#sudo nano /boot/config.txt
-#append
-#  dtoverlay=gpio-poweroff,gpiopin=17,active_low=0
+Pull down (open collector) on GPIO4 to initiate shutdown (pin7)
+Shutdown in progress will raise GPIO17 (pin11)
+  sudo nano /boot/config.txt
+  append
+    dtoverlay=gpio-poweroff,gpiopin=17,active_low=0
 Pin 11 will go high when Rpi is ready to have power removed
-#  dtoverlay=gpio-shutdown,gpiopin=4,active_low=1,gpio_pull=up
+    dtoverlay=gpio-shutdown,gpiopin=4,active_low=1,gpio_pull=up
 Pulling pin 4 low will cause the Rpi to initiate shutdown
-#power must be removed within 3 seconds of gpio-poweroff or kernel panic will occur
 
-#Autostart UGS:
+NOTE: power must be removed within 3 seconds of gpio-poweroff or kernel panic will occur
+
+Autostart UGS:
 
 sudo nano /lib/systemd/system/startUGS.service
 [Unit]
@@ -50,9 +51,13 @@ TimeoutSec=infinity
 [Install]
 WantedBy=graphical.target
 
-sudo systemctl daemon-reload
-sudo systemctl enable startUGS.service
-sudo systemctl stop startUGS.service
-sudo systemctl disable clock.service
-sudo rm /lib/systemd/system/clock.service
-sudo systemctl daemon-reload
+Then to activate the change:
+  sudo systemctl daemon-reload
+  sudo systemctl enable startUGS.service
+To stop the autostart when running:
+  sudo systemctl stop startUGS.service
+To disable the autostart:
+  sudo systemctl disable startUGS.service
+To remove the autostart from the table:
+  sudo rm /lib/systemd/system/startUGS.service
+  sudo systemctl daemon-reload
