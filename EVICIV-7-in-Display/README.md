@@ -1,5 +1,5 @@
 # Eviciv 7" Touch-Display  
-<img src="https://raw.githubusercontent.com/uChip/UGSpi-Touch-Display/master/RVICIV-7-in-Display/Eviciv7-display-model.png" alt="Touch-Display Model" >  
+<img src="https://raw.githubusercontent.com/uChip/UGSpi-Touch-Display/master/EVICIV-7-in-Display/Eviciv7-display-model.png" alt="Touch-Display Model" >  
 
 # Where to Buy
 
