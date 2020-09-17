@@ -1,4 +1,7 @@
-Eviciv 7" Touch-Display
+# Eviciv 7" Touch-Display  
+<img src="https://raw.githubusercontent.com/uChip/UGSpi-Touch-Display/master/RVICIV-7-in-Display/Eviciv7-display-model.png" alt="Touch-Display Model" >  
+
+# Where to Buy
 
 I bought mine from Amazon:
 https://smile.amazon.com/Eviciv-Portable-Monitor-Display-1024X600/dp/B07L6WT77H/ref=sr_1_2?crid=22FWY4R6QGRWG&dchild=1&keywords=eviciv+7-inch+touchscreen&qid=1600215041&sprefix=EVICI%2Caps%2C225&sr=8-2
